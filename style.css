@@ -1,0 +1,13 @@
+.load {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+}
+
+.pg-right {
+  float: right;
+}
+
+.sel-right {
+  width: 10%;
+}
