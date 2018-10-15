@@ -52,7 +52,7 @@
 					$("#page").html(pp) //页码生成
 					for (var i = 0; i < page; i++) {
 						if (i == (offset - 1)) { //当前页码样式
-							$(".ppgg" + i + "").addClass("active")
+							$(".ppgg" + i).addClass("active")
 						}
 					}
 					if (offset == 1) {
@@ -65,31 +65,31 @@
 						if ((page - offset) == 1) {
 							for (var i = 0; i < page; i++) {
 								if (i < (offset - 4) || i > offset) { //隐藏多余页码（倒数第二页时）
-									$(".ppgg" + i + "").css("display", "none")
+									$(".ppgg" + i).css("display", "none")
 								}
 							}
 						} else if ((page - offset) == 0) {
 							for (var i = 0; i < page; i++) {
 								if (i < (offset - 5)) { //隐藏多余页码（末页时）
-									$(".ppgg" + i + "").css("display", "none")
+									$(".ppgg" + i).css("display", "none")
 								}
 							}
 						} else if (offset == 2){
 							for (var i = 0; i < page; i++) {
 								if (i > (offset + 2)) { //隐藏多余页码（第二页时）
-									$(".ppgg" + i + "").css("display", "none")
+									$(".ppgg" + i).css("display", "none")
 								}
 							}
 						} else if (offset == 1){
 							for (var i = 0; i < page; i++) {
 								if (i > (offset + 3)) { //隐藏多余页码（首页时）
-									$(".ppgg" + i + "").css("display", "none")
+									$(".ppgg" + i).css("display", "none")
 								}
 							}
 						} else {
 							for (var i = 0; i < page; i++) {
 								if (i < (offset - 3) || i > (offset + 1)) { //隐藏多余页码（显示5个页码）
-									$(".ppgg" + i + "").css("display", "none")
+									$(".ppgg" + i).css("display", "none")
 								}
 							}
 						}
