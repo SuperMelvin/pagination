@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .load {
   position: absolute;
   top: 20%;
@@ -10,4 +14,9 @@
 
 .sel-right {
   width: 10%;
+}
+
+.table-overflow {
+  height: 560px;
+  overflow: scroll;
 }
