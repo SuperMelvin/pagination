@@ -2,7 +2,7 @@
 	function pageTable(obj) {
 		var thead = "<th scope='col'>Id</th><th scope='col'>Title</th><th scope='col'>Year</th>" //表头
 		var select = "<option value='5'>5条/页</option><option value='10'>10条/页</option><option value='20'>20条/页</option>" //选择每页几项
-		$("#pagination").html("<div class='row table-overflow'><div class='col'><table class='table'><thead><tr>" + thead + "</tr></thead><tbody id='table'></tbody></table></div></div><div class='row'><div class='col'><select id='pageSelect' class='custom-select sel-right'>" + select + "</select><nav aria-label='Page navigation example' class='pg-right'><ul class='pagination' id='page'></ul></nav></div></div><img src='loading.gif' alt='loading...' class='load' id='loading'/>") //表格、页码绘制
+		$("#pagination").html("<div class='row table-overflow'><div class='col'><table class='table'><thead><tr>" + thead + "</tr></thead><tbody id='table'></tbody></table></div></div><div class='row'><div class='col'><select id='pageSelect' class='custom-select sel-right'>" + select + "</select><nav aria-label='Page navigation example' class='pg-right'><ul class='pagination' id='page'></ul></nav></div></div><div class='spinner' id='loading'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>") //表格、页码绘制
 		var limit = obj.limit //每页大小，入参
 		var offset = obj.offset //当前页数，入参
 		var ol = { //作为参数传给tablePage方法
