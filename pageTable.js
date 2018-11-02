@@ -1,8 +1,8 @@
 (function () {
 	function pageTable(obj) {
-		var thead = "<th scope='col'>Id</th><th scope='col'>Title</th><th scope='col'>Year</th>" //表头
+		var thead = "<div class='row'><div class='col'><table class='table'><thead><tr><th scope='col' class='thead'>Rating</th><th scope='col' class='thead'>Title</th><th scope='col' class='thead'>Year</th></tr></thead></table></div></div>" //表头
 		var select = "<option value='5'>5条/页</option><option value='10'>10条/页</option><option value='20'>20条/页</option>" //选择每页几项
-		$("#pagination").html("<div class='row table-overflow'><div class='col'><table class='table'><thead><tr>" + thead + "</tr></thead><tbody id='table'></tbody></table></div></div><div class='row'><div class='col'><select id='pageSelect' class='custom-select sel-right'>" + select + "</select><nav aria-label='Page navigation example' class='pg-right'><ul class='pagination' id='page'></ul></nav></div></div><div class='spinner' id='loading'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>") //表格、页码绘制
+		$("#pagination").html(thead + "<div class='row table-overflow'><div class='col'><table class='table table-hover'><tbody id='table'></tbody></table></div></div><div class='row'><div class='col'><select id='pageSelect' class='custom-select sel-right'>" + select + "</select><nav aria-label='Page navigation example' class='pg-right'><ul class='pagination' id='page'></ul></nav></div></div><div class='spinner' id='loading'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>") //表格、页码绘制
 		var limit = obj.limit //每页大小，入参
 		var offset = obj.offset //当前页数，入参
 		var ol = { //作为参数传给tablePage方法
@@ -24,11 +24,9 @@
 				count: limit,
 			}
 			$.ajax({
-				type: "POST",
 				dataType: "jsonp",
-				data: data,
 				timeout: 60000, //超时时间60s
-				url: "http://api.douban.com/v2/movie/top250",
+				url: "http://api.douban.com/v2/movie/top250?start=" + start + "&count=" + limit,
 				success: function (res) {
 					console.log(res)
 					$("#loading").hide() //隐藏加载动画
@@ -41,7 +39,7 @@
 					var list = res.subjects //请求返回的数组
 					var it = "" //表格拼接变量
 					for (var i = 0; i < list.length; i++) { //表格生成
-						it = it + "<tr class='ttbb" + i + "'><td>" + list[i].id + "</td><td>" + list[i].title + "</td><td>" + list[i].year + "</td></tr>"
+						it = it + "<tr class='ttbb" + i + "'><td class='thead'>" + list[i].rating.average + "</td><td class='thead'>" + list[i].title + "</td><td class='thead'>" + list[i].year + "</td></tr>"
 					}
 					$("#table").html(it)
 					for (var i = 0; i < page; i++) { //页码拼接

@@ -10,7 +10,13 @@
   width: 10%;
 }
 
+.thead {
+  width: 33%;
+  text-align: center;
+}
+
 .table-overflow {
+  margin-top: -18px;
   height: 560px;
   overflow: scroll;
 }
